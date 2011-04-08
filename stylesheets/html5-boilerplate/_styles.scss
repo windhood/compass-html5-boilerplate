@@ -5,7 +5,7 @@ $link-active-color: #607890 !default;
 $link-visited-color: #607890 !default;
 $selected-font-color: #fff !default;
 $selected-background-color: #ff5e99 !default;
-$list-left-margin: 1.8em !default;
+$list-left-margin: 2em !default;
 
 //
 // Minimal base styles
@@ -13,35 +13,45 @@ $list-left-margin: 1.8em !default;
 
 @mixin html5-boilerplate-styles {
   html { @include force-scrollbar; }
-
+  
+  @include accessible-focus;  
+  
   ul, ol { margin-left: $list-left-margin; }
   ol { list-style-type: decimal; }
 
-  td, td img { vertical-align: top; }
+  @include no-nav-margins;
+  
+  //already in _page.scss
+  //small { font-size: 85%; }
+  //strong, th { font-weight: bold; }
+  
+  td { vertical-align: top; }
 
   sub { @include sub; }
 
   sup { @include sup; }
 
+  @include quoted-pre;
+  
   textarea { overflow: auto; }  // www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars
 
-  @include accessible-focus;
-
-  @include quoted-pre;
-
+  ie6 legend, .ie7 legend { margin-left: -7px; } 
+  
   @include align-input-labels;
 
   @include hand-cursor-inputs;
 
   @include webkit-reset-form-elements;
 
+  @include colors-for-form-validity;
+  
   @include selected-text;
 
   @include webkit-tap-highlight;
 
   @include ie-hacks;
 
-  @include no-nav-margins;
+  
 }
 
 // set sub, sup without affecting line-height: gist.github.com/413930
@@ -84,6 +94,14 @@ $list-left-margin: 1.8em !default;
   button, input, select, textarea { margin: 0; }
 }
 
+@mixin colors-for-form-validity {
+  input:valid, textarea:valid   {  }
+  input:invalid, textarea:invalid {
+     border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red;
+  }
+  .no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+}
+
 // These selection declarations have to be separate.
 // No text-shadow: twitter.com/miketaylr/status/12228805301 
 // Also: hot pink!
@@ -102,7 +120,7 @@ $list-left-margin: 1.8em !default;
   overflow-y: scroll;
 }
 
-@mixin ie-hacks {
+@mixin ie-hacks {  
   // Make buttons play nice in IE:    
   // www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
   button {  width: auto; overflow: visible; }
@@ -111,7 +129,6 @@ $list-left-margin: 1.8em !default;
   // code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
   .ie7 img { -ms-interpolation-mode: bicubic; }
 
-  .ie6 legend, .ie7 legend { margin-left: -7px; }
 }
 
 @mixin no-nav-margins {

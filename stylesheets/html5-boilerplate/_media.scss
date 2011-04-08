@@ -1,8 +1,4 @@
 @mixin html5-boilerplate-media {
-  @media print {
-    @include media-print;
-  }
-
   @media all and (orientation:portrait) { 
     @include media-orientation-portrait;
   }
@@ -13,6 +9,10 @@
 
   @media screen and (max-device-width: 480px) {
     @include media-mobile;
+  }
+  
+  @media print {
+    @include media-print;
   }
 }
 
