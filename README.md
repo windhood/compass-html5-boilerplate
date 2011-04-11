@@ -162,3 +162,8 @@ HTML5 Boilerplate by Paul Irish
 
 Compass Extension Copyright (c) 2010-2011, Peter Gumeson  
 [http://creativecommons.org/licenses/by/3.0](http://creativecommons.org/licenses/by/3.0)
+
+
+Install Gem to local
+gem build html5-boilerplate.gemspec
+gem install html5-boilerplate-0.3.2.gem
